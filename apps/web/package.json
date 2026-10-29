@@ -16,9 +16,9 @@
         "@repo/area-privada": "*",
         "@repo/ui": "*",
         "astro": "^5.5.5",
-        "react": "19.0.0",
-        "react-dom": "19.0.0",
-        "react-server-dom-webpack": "19.0.0"
+        "react": "19.0.8",
+        "react-dom": "19.0.8",
+        "react-server-dom-webpack": "19.0.8"
     },
     "devDependencies": {
         "@repo/eslint-config": "*",
