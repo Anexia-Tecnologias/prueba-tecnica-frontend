@@ -11,8 +11,8 @@
     },
     "dependencies": {
         "@repo/ui": "*",
-        "react": "19.0.0",
-        "react-dom": "19.0.0"
+        "react": "19.0.8",
+        "react-dom": "19.0.8"
     },
     "devDependencies": {
         "@repo/eslint-config": "*",
