@@ -8,12 +8,12 @@ Ninguna
 
 ## Paquetes
 
-- [`apps/docs`](apps/docs/VULNERABILITIES.md): 1 major pendiente que hay que actualizar
-- [`apps/web`](apps/web/VULNERABILITIES.md): 2 majors pendientes que hay que actualizar
-- [`packages/area-privada`](packages/area-privada/VULNERABILITIES.md): sin majors pendientes
-- [`packages/eslint-config`](packages/eslint-config/VULNERABILITIES.md): sin majors pendientes
+- [`apps/docs`](apps/docs/VULNERABILITIES.md): 1 major pendiente que hay que actualizar, 2 propuestas para no actualizar
+- [`apps/web`](apps/web/VULNERABILITIES.md): 2 majors pendientes que hay que actualizar, 1 propuesta para no actualizar
+- [`packages/area-privada`](packages/area-privada/VULNERABILITIES.md): 1 major pendiente, propuesta para no actualizar
+- [`packages/eslint-config`](packages/eslint-config/VULNERABILITIES.md): 1 major pendiente, propuesta para no actualizar
 - [`packages/typescript-config`](packages/typescript-config/VULNERABILITIES.md): sin majors pendientes
-- [`packages/ui`](packages/ui/VULNERABILITIES.md): sin majors pendientes
+- [`packages/ui`](packages/ui/VULNERABILITIES.md): 1 major pendiente, propuesta para no actualizar
 
 ## Registro
 

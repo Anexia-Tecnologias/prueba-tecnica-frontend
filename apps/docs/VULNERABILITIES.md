@@ -7,8 +7,22 @@
 | Paquete | Instalada | Corrige | Última | Decisión | Motivo | Alertas |
 |---|---|---|---|---|---|---|
 | `uuid` | 9.0.1 | 11.1.1 | storybook 10.6.5 (2 majors) | 🛠️ Hay que actualizar | major: `@storybook/addon-actions` 8.x pide `uuid` ^9; hay que subir Storybook a 9 o superior (`addon-essentials` desaparece) | [GHSA-w5hq-g745-h8pq](https://github.com/advisories/GHSA-w5hq-g745-h8pq) |
+| `glob` | 10.5.0 | 14.0.2 | 14.0.3 (4 majors) | ⚪ No se actualiza (propuesta) | Solo lo usa `@joshwooding/vite-plugin-react-docgen-typescript` 0.5.0 (vía `@storybook/react-vite`) con `globSync`, sin `AbortSignal`; el fallo solo afecta al recorrido asíncrono cancelado. Premisa: [`apps/docs/package.json`](https://github.com/Anexia-Tecnologias/prueba-tecnica-frontend/blob/1b63dbf61bfd4319e0f63d77c8e84261b6c964fd/apps/docs/package.json) | [GHSA-3g3m-2fjr-6pw4](https://github.com/advisories/GHSA-3g3m-2fjr-6pw4) |
+| `minimatch` | 3.1.5 / 9.0.9 | 11.0.1 | 11.0.3 (8 y 2 majors) | ⚪ No se actualiza (propuesta) | Solo herramientas de desarrollo (`eslint`, `typescript-eslint`, `eslint-plugin-react`, `glob` del docgen de Storybook) con patrones escritos en el repo; nada de `apps/` ni `packages/` lo importa. Premisa: [`packages/eslint-config/package.json`](https://github.com/Anexia-Tecnologias/prueba-tecnica-frontend/blob/1b63dbf61bfd4319e0f63d77c8e84261b6c964fd/packages/eslint-config/package.json), busca:'minimatch' en `apps` y `packages` | [GHSA-g3hv-75wg-m249](https://github.com/advisories/GHSA-g3hv-75wg-m249) |
 
 ## Registro
+
+### 2026-10-31
+
+Repo sin alertas de Dependabot: hallazgos de `npm audit` sobre `package-lock.json` de la raíz.
+
+#### ✅ Actualizadas
+- 🟡 `vite` 6.4.4 → 6.4.5 (patch, directa en `apps/docs`, rango `^6.4.4` → `^6.4.5`; se deduplica con la copia de la raíz). `server.fs.deny` se salta con queries en el dev server de Storybook, máquina del desarrollador. (npm audit) [GHSA-8g5g-mxqh-grgj](https://github.com/advisories/GHSA-8g5g-mxqh-grgj)
+- 🟡 `ws` 8.19.0 → 8.22.0 (minor, transitiva vía `@storybook/core` 8.6.19, rango `^8.2.3` sin cambios). Antes 🛠️: con npm 10.9.7 `npm update ws` no movía el lockfile; con npm 11.19.1 sí. Dev server de Storybook, máquina del desarrollador. (npm audit) [GHSA-58qx-3vcg-4xpx](https://github.com/advisories/GHSA-58qx-3vcg-4xpx) [GHSA-96hv-2xvq-fx4p](https://github.com/advisories/GHSA-96hv-2xvq-fx4p)
+
+#### ⚪ Propuestas para descartar
+- 🟡→⚪ `glob` 10.5.0, 1 advisory (el recorrido sigue tras abortar con `AbortSignal`). No aplica: solo lo usa `@joshwooding/vite-plugin-react-docgen-typescript` 0.5.0 (vía `@storybook/react-vite` de [`apps/docs/package.json`](https://github.com/Anexia-Tecnologias/prueba-tecnica-frontend/blob/1b63dbf61bfd4319e0f63d77c8e84261b6c964fd/apps/docs/package.json)), que llama a `globSync` sin `signal` (`dist/index.mjs`, líneas 49-53); el fallo es del recorrido asíncrono cancelado. Arreglo solo en 14.0.2 (major). Premisa: apps/docs/package.json@4dd9cab. (npm audit) [GHSA-3g3m-2fjr-6pw4](https://github.com/advisories/GHSA-3g3m-2fjr-6pw4)
+- 🟡→⚪ `minimatch` 3.1.5 / 9.0.9, 1 advisory (DoS por amplificación de patrones). No aplica: hace falta un patrón controlado por un atacante, y solo lo usan `eslint`, `typescript-eslint`, `eslint-plugin-react` y el `glob` del docgen de Storybook, devDependencies que procesan patrones escritos en el repo (config de ESLint, `tsconfig`, `stories` de [`apps/docs/.storybook/main.ts`](https://github.com/Anexia-Tecnologias/prueba-tecnica-frontend/blob/1b63dbf61bfd4319e0f63d77c8e84261b6c964fd/apps/docs/.storybook/main.ts#L4)). Ningún fichero de `apps/` ni `packages/` lo importa. Arreglo solo en 11.0.1 (major). Premisa: packages/eslint-config/package.json@ba541f5, busca:'minimatch' en apps@e69de29, busca:'minimatch' en packages@e69de29. (npm audit) [GHSA-g3hv-75wg-m249](https://github.com/advisories/GHSA-g3hv-75wg-m249)
 
 ### 2026-10-29
 
