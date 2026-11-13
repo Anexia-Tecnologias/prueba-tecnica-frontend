@@ -11,8 +11,8 @@
     },
     "dependencies": {
         "@repo/ui": "*",
-        "react": "19.0.8",
-        "react-dom": "19.0.8"
+        "react": "19.0.9",
+        "react-dom": "19.0.9"
     },
     "devDependencies": {
         "@repo/eslint-config": "*",
@@ -29,6 +29,6 @@
         "eslint": "^9.39.1",
         "storybook": "8.6.19",
         "typescript": "5.9.2",
-        "vite": "^6.4.4"
+        "vite": "^6.4.5"
     }
 }
