@@ -6,7 +6,7 @@
 
 | Paquete | Instalada | Corrige | Última | Decisión | Motivo | Alertas |
 |---|---|---|---|---|---|---|
-| `minimatch` | 3.1.5 / 9.0.9 | 11.0.1 | 11.0.8 (8 y 2 majors) | ⚪ No se actualiza (propuesta) | Solo herramientas de desarrollo (`eslint`, `typescript-eslint`, `eslint-plugin-react`, `glob` del docgen de Storybook) con patrones escritos en el repo; nada de `apps/` ni `packages/` lo importa. Premisa: [`packages/eslint-config/package.json`](https://github.com/Anexia-Tecnologias/prueba-tecnica-frontend/blob/1b63dbf61bfd4319e0f63d77c8e84261b6c964fd/packages/eslint-config/package.json), busca:'minimatch' en `apps` y `packages` | [GHSA-g3hv-75wg-m249](https://github.com/advisories/GHSA-g3hv-75wg-m249) |
+| `minimatch` | 3.1.5 / 9.0.9 | 11.0.1 | 11.0.8 (8 y 2 majors) | ⚪ No se actualiza | Solo herramientas de desarrollo (`eslint`, `typescript-eslint`, `eslint-plugin-react`, `glob` del docgen de Storybook) con patrones escritos en el repo; nada de `apps/` ni `packages/` lo importa. Premisa: [`packages/eslint-config/package.json`](https://github.com/Anexia-Tecnologias/prueba-tecnica-frontend/blob/1b63dbf61bfd4319e0f63d77c8e84261b6c964fd/packages/eslint-config/package.json), busca:'minimatch' en `apps` y `packages` | [GHSA-g3hv-75wg-m249](https://github.com/advisories/GHSA-g3hv-75wg-m249) |
 
 ## Registro
 

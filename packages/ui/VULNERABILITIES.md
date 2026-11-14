@@ -6,9 +6,20 @@
 
 | Paquete | Instalada | Corrige | Última | Decisión | Motivo | Alertas |
 |---|---|---|---|---|---|---|
-| `minimatch` | 3.1.5 / 9.0.9 | 11.0.1 | 11.0.8 (8 y 2 majors) | ⚪ No se actualiza (propuesta) | Solo herramientas de desarrollo (`eslint`, `typescript-eslint`, `eslint-plugin-react`, `glob` del docgen de Storybook) con patrones escritos en el repo; nada de `apps/` ni `packages/` lo importa. Premisa: [`packages/eslint-config/package.json`](https://github.com/Anexia-Tecnologias/prueba-tecnica-frontend/blob/1b63dbf61bfd4319e0f63d77c8e84261b6c964fd/packages/eslint-config/package.json), busca:'minimatch' en `apps` y `packages` | [GHSA-g3hv-75wg-m249](https://github.com/advisories/GHSA-g3hv-75wg-m249) |
+| `vitest` | 4.0.18 | 4.1.12 | 5.1.0 (4.1.x exige `std-env` 4) | 🛠️ Hay que actualizar | Toda la 4.1.x exige `std-env` 3 → 4 (major). Solo tests y máquina del desarrollador | [GHSA-5xrq-8626-4rwp](https://github.com/advisories/GHSA-5xrq-8626-4rwp) [GHSA-82fw-gwwq-j7x9](https://github.com/advisories/GHSA-82fw-gwwq-j7x9) [GHSA-qxg6-89mg-rqv8](https://github.com/advisories/GHSA-qxg6-89mg-rqv8) |
+| `minimatch` | 3.1.5 / 9.0.9 | 11.0.1 | 11.0.8 (8 y 2 majors) | ⚪ No se actualiza | Solo herramientas de desarrollo (`eslint`, `typescript-eslint`, `eslint-plugin-react`, `glob` del docgen de Storybook) con patrones escritos en el repo; nada de `apps/` ni `packages/` lo importa. Premisa: [`packages/eslint-config/package.json`](https://github.com/Anexia-Tecnologias/prueba-tecnica-frontend/blob/1b63dbf61bfd4319e0f63d77c8e84261b6c964fd/packages/eslint-config/package.json), busca:'minimatch' en `apps` y `packages` | [GHSA-g3hv-75wg-m249](https://github.com/advisories/GHSA-g3hv-75wg-m249) |
 
 ## Registro
+
+### 2026-11-14
+
+Repo sin alertas de Dependabot: hallazgos de `npm audit` sobre `package-lock.json` de la raíz.
+
+#### 🛠️ Requieren actualización manual
+- 🔴→🟠 `vitest` 4.0.18 → 4.1.12. Motivo: toda la 4.1.x declara `std-env` ^4.0.0-rc.1 y la instalada es 3.10.0 (major). Antes: fallo `edgesOut` de npm 10.9.7; con npm 11.19.1 la instalación resuelve, pero sube `std-env` 3.10.0 → 4.3.0. (npm audit) [GHSA-5xrq-8626-4rwp](https://github.com/advisories/GHSA-5xrq-8626-4rwp) [GHSA-82fw-gwwq-j7x9](https://github.com/advisories/GHSA-82fw-gwwq-j7x9) [GHSA-qxg6-89mg-rqv8](https://github.com/advisories/GHSA-qxg6-89mg-rqv8)
+  - Subir `vitest` 4.0.18 → 4.1.12 en `packages/ui` y `packages/area-privada` (pin exacto), aceptando `std-env` 4; hoy solo `vitest` depende de `std-env`.
+  - Cambios: [vitest 4.1.0](https://github.com/vitest-dev/vitest/releases/tag/v4.1.0), [vitest 4.1.12](https://github.com/vitest-dev/vitest/releases/tag/v4.1.12), [std-env 4.0.0](https://github.com/unjs/std-env/releases/tag/v4.0.0)
+  - Afecta a este proyecto: solo tests y máquina del desarrollador (UI server, mocks).
 
 ### 2026-11-12
 
